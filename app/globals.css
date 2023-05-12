@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #222;
+  color: #fff;
+  font-family: 'Oswald', sans-serif;
+}
+
+img {
+  width: 200px;
+  height: 100px;
+}
