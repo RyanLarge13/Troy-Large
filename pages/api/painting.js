@@ -2,10 +2,8 @@ import mongoose from "mongoose";
 import { connectDB } from "../../utils/connectDB.js";
 
 const handler = async (req, res) => {
-await connectDB();
+  await connectDB();
   const paintings = mongoose.connection.collection("paintings");
-  const data = await paintings.find({}).toArray();
+  const data = await paintings.findById(req.params.id);
   res.status(200).json({ data });
 };
-
-export default handler;

@@ -15,10 +15,12 @@ const Home = async () => {
             key={painting._id}
             className="my-20 flex flex-col justify-center items-center text-center"
           >
-            <img
-              src={painting.Img}
-              className="w-full h-[300px] object-cover object-center"
-            />
+            <a href={`/painting/${painting._id}`}>
+              <img
+                src={painting.Img}
+                className="w-full h-[300px] object-cover object-center"
+              />
+            </a>
             <div className="p-2">
               <h2 className="font-bold mt-2 mb-5 text-wrap mx-10">
                 {painting.Title}
