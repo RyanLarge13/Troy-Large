@@ -1,6 +1,6 @@
 const getPaintings = async () => {
 	try {
-  const res = await fetch(`${process.env.API_ENDPOINT}/api/paintings`);
+  const res = await fetch(`/api/paintings`);
   return res.json();
 	} catch (err) {
 		console.log(err)
