@@ -1,5 +1,5 @@
 const getPaintings = async () => {
-  const res = await fetch("http://localhost:3000/api/paintings");
+  const res = await fetch(`${process.env.API_ENDPOINT}/api/paintings`);
   return res.json();
 };
 
