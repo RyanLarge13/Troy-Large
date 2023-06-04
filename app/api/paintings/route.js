@@ -6,6 +6,7 @@ export const GET = async (req) => {
     await connectDB();
     const paintings = mongoose.connection.collection("paintings");
     const data = await paintings.find({}).toArray();
+    console.log(data)
     return new Response(JSON.stringify(data), { status: 200 });
   } catch (err) {
     console.log(err);

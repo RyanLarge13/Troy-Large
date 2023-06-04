@@ -1,6 +1,10 @@
 const getPaintings = async () => {
+	try {
   const res = await fetch(`${process.env.API_ENDPOINT}/api/paintings`);
   return res.json();
+	} catch (err) {
+		console.log(err)
+	}
 };
 
 const Home = async () => {
