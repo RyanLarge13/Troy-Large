@@ -8,7 +8,7 @@ const HeadingLink = ({ title, id }) => {
     <div className="flex border-b border-b-white cursor-pointer">
       <h2
         onClick={() => router.push(`/painting?id=${id}`)}
-        className="font-bold text-xl pb-1 mr-2 md:text-3xl"
+        className="font-bold text-xl pb-1 mr-2 lg:text-3xl"
       >
         {title}
       </h2>

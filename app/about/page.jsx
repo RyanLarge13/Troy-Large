@@ -3,7 +3,7 @@ const About = () => {
     <section className="p-2 md: px-5">
       <h1 className="text-3xl font-bold text-center mb-10">Troy Large</h1>
       <hr />
-      <h2 className="text-2xl mt-4 mb-3 font-bold md:text-3xl">
+      <h2 className="text-2xl mt-4 mb-3 font-bold md:text-3xl text-amber-200">
         The Beginning
       </h2>
       <p className="indent-5 mb-2 ml-1 md:text-xl">
@@ -21,7 +21,9 @@ const About = () => {
         amazing artistic side of the world for a very long time. And just like
         that, at the age of 8 his artistic intuitions were born.
       </p>
-      <h2 className="text-2xl mt-4 mb-3 font-bold md:text-3xl">Intuition</h2>
+      <h2 className="text-2xl mt-4 mb-3 font-bold md:text-3xl text-amber-200">
+        Intuition
+      </h2>
       <p className="indent-5 mb-2 md:text-xl">
         As any good artist would do, my father became fixed on religiously
         drawing & painting everything he could possibly imagine. Not very often
@@ -40,7 +42,9 @@ const About = () => {
         exactly as he did in order to show them who he is through art.
       </p>
       <p className="indent-5 mb-2 md:text-xl">He does just that...</p>
-      <h2 className="text-2xl mt-4 mb-3 font-bold md:text-3xl">The Future</h2>
+      <h2 className="text-2xl mt-4 mb-3 font-bold md:text-3xl text-amber-200">
+        The Future
+      </h2>
       <p className="indent-5 mb-2 md:text-xl">
         Not all times in this life are as wonderful as making art everyday doing
         what you love. Real life unfortunately does not consist of those

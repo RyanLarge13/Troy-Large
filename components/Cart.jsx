@@ -1,16 +1,24 @@
 "use client";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 import { AiOutlineShoppingCart, AiOutlineCloseCircle } from "react-icons/ai";
 
 const Cart = () => {
+  const router = useRouter();
   const [items, setItems] = useState([]);
   const [show, setShow] = useState(false);
 
   useEffect(() => {
+    setInterval(() => {
+      getItems();
+    }, 1000);
+  }, []);
+
+  const getItems = () => {
     const cartItems = JSON.parse(localStorage.getItem("cart-items")) || [];
     setItems(cartItems);
-  }, [show]);
+  };
 
   const removeItem = (id) => {
     const newList = items.filter((item) => item._id !== id);
@@ -39,27 +47,36 @@ const Cart = () => {
         <AiOutlineShoppingCart />
       </div>
       <motion.div
-      initial={{y: "110%"}} 
+        initial={{ y: "110%" }}
         animate={show ? { y: 0 } : { y: "110%" }}
         className="fixed bottom-0 right-0 left-0 bg-[#222] p-5 shadow-sm"
       >
         {items.length > 0 ? (
           <div>
-            <p>
+            <p className="mb-3 pb-1 border-b-slate-700 border-b">
               total: ${getTotal()} | count: {items.length}
             </p>
-            {items.map((item) => (
-              <div
-                key={item._id}
-                className="w-full border-b border-b-amber-300 px-2 py-5 flex justify-between items-center"
-              >
-                <p>{item.Title}</p>
-                <AiOutlineCloseCircle
-                  onClick={() => removeItem(item._id)}
-                  className="text-amber-300"
-                />
-              </div>
-            ))}
+            <div className="max-h-[50vh] overflow-y-auto">
+              {items.map((item) => (
+                <div
+                  onClick={() => {
+                    setShow(false);
+                    router.push(`/painting?id=${item._id}`);
+                  }}
+                  key={item._id}
+                  className="w-full border-b border-b-amber-300 px-2 py-5 flex justify-between items-center"
+                >
+                  <p>{item.Title}</p>
+                  <AiOutlineCloseCircle
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      removeItem(item._id);
+                    }}
+                    className="text-amber-300"
+                  />
+                </div>
+              ))}
+            </div>
             <button className="px-3 py-1 rounded-sm bg-slate-700 mt-5">
               CheckOut
             </button>

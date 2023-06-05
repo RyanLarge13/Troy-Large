@@ -4,6 +4,7 @@ import { useSearchParams } from "next/navigation";
 
 const Painting = () => {
   const [painting, setPainting] = useState(null);
+  const [itemInCart, setItemInCart] = useState(false);
 
   const searchParams = useSearchParams();
   const paintingId = searchParams.get("id");
@@ -14,13 +15,22 @@ const Painting = () => {
       const data = await res.json();
       setPainting(data[0]);
     };
-    if (paintingId) getPainting();
+    if (paintingId) {
+      getPainting();
+      const cartItems = JSON.parse(localStorage.getItem("cart-items")) || [];
+      const inCart = cartItems.some((item) => item._id === paintingId);
+      inCart ? setItemInCart(true) : setItemInCart(false);
+    }
   }, [paintingId]);
 
   const addToCart = (item) => {
     const cartItems = JSON.parse(localStorage.getItem("cart-items")) || [];
-    cartItems.push(item);
-    localStorage.setItem("cart-items", JSON.stringify(cartItems));
+    const included = cartItems.some((cartItem) => cartItem._id === item._id);
+    if (!included) {
+      cartItems.push(item);
+      localStorage.setItem("cart-items", JSON.stringify(cartItems));
+      setItemInCart(true)
+    }
   };
 
   return (
@@ -41,10 +51,10 @@ const Painting = () => {
           <p className="text-sm text-center mt-5">{painting.Price}</p>
           <div className="mt-10 p-3 flex justify-center items-center">
             <button
-              onClick={() => addToCart(painting)}
+              onClick={() => (itemInCart ? null : addToCart(painting))}
               className="px-3 py-1 rounded-sm bg-slate-700 text-amber-300"
             >
-              Add To Cart
+              {itemInCart ? "Added" : "Add To Cart"}
             </button>
           </div>
         </div>
