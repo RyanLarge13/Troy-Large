@@ -32,7 +32,7 @@ const Contact = () => {
       <h1 className="text-center font-bold mb-5">Contact Troy</h1>
       <form
         onBlur={() => storeCredentials()}
-        className="flex flex-col justify-center items-center p-2 mt-20 text-black"
+        className="flex flex-col md:w-[80%] md:mx-auto justify-center items-center p-2 mt-20 text-black"
       >
         <label htmlFor="name" className="hidden">
           Name
@@ -64,7 +64,10 @@ const Contact = () => {
           value={message && message}
           className="w-full p-2 min-h-[300px] focus:outline-0 focus:bg-amber-100 duration-200"
         ></textarea>
-        <button type="submit" className="px-5 py-2 mt-5 bg-amber-300">
+        <button
+          type="submit"
+          className="px-5 py-2 mt-5 bg-[#222] text-amber-300 rounded-sm shadow-md"
+        >
           Submit
         </button>
       </form>

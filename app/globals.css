@@ -25,7 +25,6 @@ body {
 
 /* Style your items */
 .my-masonry-grid_column > div {
-  /* change div to reference your elements you put in <Masonry> */
-  background: grey;
+  cursor: pointer;
   margin-bottom: 30px;
 }

@@ -23,7 +23,12 @@ const MasonryGrid = ({ images }) => {
     >
       {images.map((img) => (
         <div onClick={() => showPainting(img.id)}>
-          <img key={img.id} src={img.img} alt="painting" className="rounded-sm" />
+          <img
+            key={img.id}
+            src={img.img}
+            alt="painting"
+            className="rounded-sm"
+          />
         </div>
       ))}
     </Masonry>

@@ -27,11 +27,17 @@ const Painting = () => {
     <section className="mt-20 text-white">
       {painting && (
         <div>
-          <p className="text-2xl text-center font-bold mb-10">
+          <p className="text-2xl text-center font-bold mb-10 md:text-3xl">
             {painting.Title}
           </p>
-          <img src={painting.Img} alt={painting.Title} />
-          <p className="mt-5 text-center">{painting.Description}</p>
+          <img
+            src={painting.Img}
+            alt={painting.Title}
+            className="object-cover mx-auto w-full h-full md:w-[800px] md:h-[700px]"
+          />
+          <p className="mt-5 text-center md:text-2xl md:w-[50%] md:my-20 md:mx-auto">
+            {painting.Description}
+          </p>
           <p className="text-sm text-center mt-5">{painting.Price}</p>
           <div className="mt-10 p-3 flex justify-center items-center">
             <button

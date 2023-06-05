@@ -8,7 +8,8 @@ const getImages = async () => {
     const paintings = mongoose.connection.collection("paintings");
     const data = await paintings.find({}).toArray();
     const images = data.map((painting) => {
-    	return {img: painting.Img, id: painting._id}
+      const obj = { img: painting.Img, id: painting._id };
+      return obj;
     });
     console.log(images);
     return images;
