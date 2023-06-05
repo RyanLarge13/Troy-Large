@@ -1,14 +1,18 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
 const Checkout = () => {
   const [loading, setLoading] = useState(false);
-  const [cartItems, setCartItems] = useState(
-    JSON.parse(localStorage.getItem("cart-items")) || []
-  );
+  const [cartItems, setCartItems] = useState([]);
+  
+  useEffect(() => {
+  	const items = JSON.parse(localStorage.getItem("cart-items")) || []
+  	setCartItems(items)
+  }, [])
+  
   const handlePayment = async () => {
     setLoading(true);
     const stripe = await stripePromise;
