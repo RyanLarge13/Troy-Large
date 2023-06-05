@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import {useRouter} from "next/navigation"
 import { loadStripe } from "@stripe/stripe-js";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
@@ -8,11 +9,13 @@ const Checkout = () => {
   const [loading, setLoading] = useState(false);
   const [cartItems, setCartItems] = useState([]);
   
+  const router = useRouter()
+
   useEffect(() => {
-  	const items = JSON.parse(localStorage.getItem("cart-items")) || []
-  	setCartItems(items)
-  }, [])
-  
+    const items = JSON.parse(localStorage.getItem("cart-items")) || [];
+    setCartItems(items);
+  }, []);
+
   const handlePayment = async () => {
     setLoading(true);
     const stripe = await stripePromise;
@@ -95,10 +98,10 @@ const Checkout = () => {
         )}
       </div>
       <button
-        onClick={handlePayment}
+        onClick={cartItems.length > 0 ? handlePayment : () => router.push("/")}
         className="px-5 py-1 mb-5 text-lg text-amber-200 rounded-sm shadow-md bg-slate-700"
       >
-        Pay
+        {cartItems.length > 0 ? "Pay" : "Shop"}
       </button>
     </section>
   );
