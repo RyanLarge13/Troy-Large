@@ -77,7 +77,9 @@ const Cart = () => {
                 </div>
               ))}
             </div>
-            <button className="px-3 py-1 rounded-sm bg-slate-700 mt-5">
+            <button onClick={() => {
+            setShow(false)
+            router.push("/checkout")}} className="px-3 py-1 rounded-sm bg-slate-700 mt-5">
               CheckOut
             </button>
           </div>

@@ -1,5 +1,103 @@
+"use client";
+import { useState } from "react";
+import { loadStripe } from "@stripe/stripe-js";
+
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
+
 const Checkout = () => {
-  return <h1>Hi!</h1>;
+  const [loading, setLoading] = useState(false);
+  const [cartItems, setCartItems] = useState(
+    JSON.parse(localStorage.getItem("cart-items")) || []
+  );
+  const handlePayment = async () => {
+    setLoading(true);
+    const stripe = await stripePromise;
+    const response = await fetch("/api/checkout", {
+      method: "POST",
+      body: JSON.stringify(cartItems),
+    });
+    const session = await response.json();
+    const result = await stripe.redirectToCheckout({
+      sessionId: session.id,
+    });
+    if (result.error) {
+      setLoading(false);
+      console.error(result.error.message);
+    }
+  };
+
+  const calcNewPrince = (sale, price) => {
+    const formattedPrice = parseFloat(price.replace(/[$,]/g, ""));
+    const newPrice = formattedPrice - sale;
+    return newPrice;
+  };
+
+  const removeItem = (id) => {
+    const newList = cartItems.filter((item) => item._id !== id);
+    localStorage.setItem("cart-items", JSON.stringify(newList));
+    setCartItems(newList);
+  };
+
+  const getTotal = () => {
+    const prices = cartItems.map((item) => item.Price);
+    const formattedPrice = prices.map((price) =>
+      parseFloat(price.replace(/[$,]/g, ""))
+    );
+    const total = formattedPrice.reduce((a, b) => a + b);
+    return total;
+  };
+
+  return (
+    <section className="mt-20 flex flex-col justify-center items-center">
+      <h1 className="text-center text-xl">Your Paintings</h1>
+      <div className="my-20">
+        {cartItems.length > 0 ? (
+          <div>
+            {cartItems.map((item) => (
+              <div key={item._id} className="my-3 rounded-sm p-3">
+                <img src={item.Img} alt={item.Title} className="rounded-sm" />
+                <div className="flex justify-between items-center">
+                  <p className="my-2">{item.Title}</p>
+                  <p
+                    className={`${Number(item.Sale) > 0 ? "line-through" : ""}`}
+                  >
+                    {item.Price}
+                  </p>
+                </div>
+                {Number(item.Sale) > 0 ? (
+                  <div className="flex justify-between items-center">
+                    <p>Sale! New Price: </p>
+                    <p>${calcNewPrice(Number(item.Sale), item.Price)}</p>
+                  </div>
+                ) : (
+                  ""
+                )}
+                <p>Quantity: 1</p>
+                <button
+                  onClick={() => removeItem(item._id)}
+                  className="mt-5 px-3 py-1 rounded-sm shadow-md bg-slate-700"
+                >
+                  Remove
+                </button>
+              </div>
+            ))}
+            <div className="pl-3 pb-1 border-b border-b-slate-700">
+              <p>Total Price: ${getTotal()}</p>
+              <p>Checkout: {cartItems.length} paintings</p>
+            </div>
+          </div>
+        ) : (
+          <p>No Items In Your Cart 😢</p>
+        )}
+      </div>
+      <button
+        onClick={handlePayment}
+        className="px-5 py-1 mb-5 text-lg text-amber-200 rounded-sm shadow-md bg-slate-700"
+      >
+        Pay
+      </button>
+    </section>
+  );
 };
 
-export default Checkout
+export default Checkout;
