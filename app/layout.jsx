@@ -1,20 +1,21 @@
 import "./globals.css";
-import Head from "next/head";
 import Header from "@components/Header";
 import Cart from "@components/Cart";
+
+export const metadata = {
+  title: "Troy Large",
+  description: "Pastel Artist Troy Large, Ecommerce Website",
+  charset: "utf-8",
+  icons: {
+    icon: "/favicon.ico",
+  },
+  viewport:
+    "width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui",
+};
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-    <Head>
-      <title>Troy Large</title>
-      <meta content="width=device-width, initial-scale=1" name="viewport" />
-      <meta
-        name="description"
-        content="An ECommerce pastel artists platform for displaying, sharing & selling content"
-      />
-      <link rel="icon" type="image/jpg" href="/icon.ico" sizes="any" />
-    </Head>
       <body>
         <Header />
         <main className="mt-20">{children}</main>
