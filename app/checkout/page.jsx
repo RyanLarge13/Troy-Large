@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import {useRouter} from "next/navigation"
+import { useRouter } from "next/navigation";
 import { loadStripe } from "@stripe/stripe-js";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
@@ -8,8 +8,8 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 const Checkout = () => {
   const [loading, setLoading] = useState(false);
   const [cartItems, setCartItems] = useState([]);
-  
-  const router = useRouter()
+
+  const router = useRouter();
 
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem("cart-items")) || [];
@@ -17,19 +17,23 @@ const Checkout = () => {
   }, []);
 
   const handlePayment = async () => {
-    setLoading(true);
-    const stripe = await stripePromise;
-    const response = await fetch("/api/checkout", {
-      method: "POST",
-      body: JSON.stringify(cartItems),
-    });
-    const session = await response.json();
-    const result = await stripe.redirectToCheckout({
-      sessionId: session.id,
-    });
-    if (result.error) {
-      setLoading(false);
-      console.error(result.error.message);
+    try {
+      setLoading(true);
+      const stripe = await stripePromise;
+      const response = await fetch("/api/checkout", {
+        method: "POST",
+        body: JSON.stringify(cartItems),
+    } );
+      const session = await response.json();
+      const result = await stripe.redirectToCheckout({
+        sessionId: session.id,
+      });
+      if (result.error) {
+        setLoading(false);
+        console.error(result.error.message);
+      }
+    } catch (err) {
+      console.log(err);
     }
   };
 

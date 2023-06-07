@@ -9,7 +9,6 @@ export const GET = async (req, { params }) => {
     const paintings = mongoose.connection.collection("paintings");
     const data = await paintings.find({}).toArray();
     const painting = data.filter((pnting) => pnting._id.toString() === id);
-    console.log(painting)
     return new Response(JSON.stringify(painting), { status: 200 });
   } catch (err) {
     console.log(err);
