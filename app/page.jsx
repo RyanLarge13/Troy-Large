@@ -7,7 +7,6 @@ const getPaintings = async () => {
     await connectDB();
     const paintings = mongoose.connection.collection("paintings");
     const data = await paintings.find({}).toArray();
-    console.log(data);
     return data;
   } catch (err) {
     console.log(err);
@@ -18,9 +17,9 @@ const getPaintings = async () => {
 const Home = async () => {
   const paintings = await getPaintings();
   return (
-    <section className="mt-20 px-3 flex flex-col justify-start items-center text-white md:grid md:grid-cols-2 md:gap-20 md:px-20">
+    <section className="mt-20 px-3 flex flex-col justify-start items-center text-white md:grid md:grid-cols-2 md:gap-10 md:px-10 lg:grid lg:grid-cols-3 lg:gap-20">
       {paintings.map((painting) => (
-        <div key={painting._id} className="my-5 w-full lg:h-[55vh]">
+        <div key={painting._id} className="my-5">
           <img
             src={painting.Img}
             alt={painting.Title}
