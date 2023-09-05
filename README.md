@@ -1,34 +1,27 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1>Troy Large</h1>
 
-## Getting Started
+<a href="https://troy-large.vercel.app">Live Site</a>
 
-First, run the development server:
+<img src="./public/favicon.ico" alt="website" />
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+<p>This repository contains the code for an artists Ecommerce Website.</p>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<p><i>This project was initialized with Next13!</i></p>
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+<h2>Introduction</h2>
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+<p><b>Using Next13 app router, MongoDB & Stripe a fully functional Ecommerce application brings an outstanding artists digital business to life! With photos, prices</b></p>
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+<h2>Build Your Own</h2>
 
-## Learn More
+<p><b>Do you want to build your own Ecommerce application?</b></p>
 
-To learn more about Next.js, take a look at the following resources:
+<ul>
+<li>Clone this repository</li>
+<li>Create your own data in MongoDB Atlas</li>
+<li>Signup for a new Stripe account</li>
+<li>Link your new database and strip to the application</li>
+<li>npm run dev!!</li>
+</ul>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<p>For a more customizable experience and personalized Ecommerce creation visit <a href="https://www.devcommerce.app/products/" alt="DC">Dev Commerce</a>
