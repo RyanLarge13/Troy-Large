@@ -11,7 +11,6 @@ const getImages = async () => {
       const obj = { img: painting.Img, id: painting._id };
       return obj;
     });
-    console.log(images);
     return images;
   } catch (err) {
     console.log(err);
