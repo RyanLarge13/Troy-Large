@@ -6,7 +6,6 @@ import { loadStripe } from "@stripe/stripe-js";
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
 const Checkout = () => {
-  const [loading, setLoading] = useState(false);
   const [cartItems, setCartItems] = useState([]);
 
   const router = useRouter();
@@ -18,29 +17,21 @@ const Checkout = () => {
 
   const handlePayment = async () => {
     try {
-      setLoading(true);
       const stripe = await stripePromise;
       const response = await fetch("/api/checkout", {
         method: "POST",
         body: JSON.stringify(cartItems),
-    } );
+      });
       const session = await response.json();
       const result = await stripe.redirectToCheckout({
         sessionId: session.id,
       });
       if (result.error) {
-        setLoading(false);
         console.error(result.error.message);
       }
     } catch (err) {
       console.log(err);
     }
-  };
-
-  const calcNewPrince = (sale, price) => {
-    const formattedPrice = parseFloat(price.replace(/[$,]/g, ""));
-    const newPrice = formattedPrice - sale;
-    return newPrice;
   };
 
   const removeItem = (id) => {
@@ -66,7 +57,11 @@ const Checkout = () => {
           <div>
             {cartItems.map((item) => (
               <div key={item._id} className="my-3 rounded-sm p-3">
-                <img src={item.Img} alt={item.Title} className="rounded-sm" />
+                <img
+                  src={item.Img}
+                  alt={item.Title}
+                  className="object-cover mx-auto w-full h-full md:w-[800px] md:h-[700px] lg:w-[500px] lg:h-[300px]"
+                />
                 <div className="flex justify-between items-center">
                   <p className="my-2">{item.Title}</p>
                   <p

@@ -28,7 +28,7 @@ const Contact = () => {
   };
 
   return (
-    <section className="flex flex-col justify-center">
+    <section className="flex flex-col justify-center lg:px-60">
       <h1 className="text-center font-bold mb-5">Contact Troy</h1>
       <form
         onBlur={() => storeCredentials()}

@@ -29,12 +29,12 @@ const Painting = () => {
     if (!included) {
       cartItems.push(item);
       localStorage.setItem("cart-items", JSON.stringify(cartItems));
-      setItemInCart(true)
+      setItemInCart(true);
     }
   };
 
   return (
-    <section className="mt-20 text-white">
+    <section className="mt-20 pb-20 text-white">
       {painting && (
         <div>
           <p className="text-2xl text-center font-bold mb-10 md:text-3xl">
@@ -43,7 +43,7 @@ const Painting = () => {
           <img
             src={painting.Img}
             alt={painting.Title}
-            className="object-cover mx-auto w-full h-full md:w-[800px] md:h-[700px]"
+            className="object-cover mx-auto w-full h-full md:w-[800px] md:h-[700px] lg:w-[500px] lg:h-[300px]"
           />
           <p className="mt-5 text-center md:text-2xl md:w-[50%] md:my-20 md:mx-auto">
             {painting.Description}

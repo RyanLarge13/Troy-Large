@@ -37,15 +37,15 @@ const Cart = () => {
 
   return (
     <>
-      <div
+      <button
         onClick={() => setShow((prev) => !prev)}
-        className="fixed bottom-5 right-5 rounded-sm px-3 py-1 text-amber-300 bg-[#222] shadow-md text-2xl z-10"
+        className="fixed bottom-5 right-5 rounded-sm px-3 py-1 text-amber-300 bg-[#222] shadow-md text-2xl z-10 cursor-pointer"
       >
-        <div className="absolute top-[-7px] right-[-7px] rounded-full bg-slate-700 shadow-sm h-[20px] w-[20px] text-xs flex justify-center items-center">
+        <p className="absolute top-[-7px] right-[-7px] rounded-full bg-slate-700 shadow-sm h-[20px] w-[20px] text-xs flex justify-center items-center">
           {items.length}
-        </div>
+        </p>
         <AiOutlineShoppingCart />
-      </div>
+      </button>
       <motion.div
         initial={{ y: "110%" }}
         animate={show ? { y: 0 } : { y: "110%" }}
@@ -77,9 +77,13 @@ const Cart = () => {
                 </div>
               ))}
             </div>
-            <button onClick={() => {
-            setShow(false)
-            router.push("/checkout")}} className="px-3 py-1 rounded-sm bg-slate-700 mt-5">
+            <button
+              onClick={() => {
+                setShow(false);
+                router.push("/checkout");
+              }}
+              className="px-3 py-1 rounded-sm bg-slate-700 mt-5"
+            >
               CheckOut
             </button>
           </div>
