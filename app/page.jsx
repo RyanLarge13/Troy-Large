@@ -19,7 +19,7 @@ const Home = async () => {
   return (
     <section className="mt-20 px-3 flex flex-col justify-center items-start text-white md:grid md:grid-cols-2 md:gap-10 md:px-10 lg:grid lg:grid-cols-3 lg:gap-20">
       {paintings.map((painting) => (
-        <div key={painting._id} className="my-5">
+        <div key={painting._id} className="my-10 md:my-5">
           <img
             src={painting.Img}
             alt={painting.Title}

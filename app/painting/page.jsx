@@ -2,6 +2,15 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 
+/*export const generateMetadata = async ({ params, searchParams }) => {
+  const res = await fetch(`/api/painting/${paintingId}`);
+  const data = await res.json();
+  return {
+    title: data[0].Title,
+    description: data[0].Description,
+  };
+};*/
+
 const Painting = () => {
   const [painting, setPainting] = useState(null);
   const [itemInCart, setItemInCart] = useState(false);
@@ -45,7 +54,7 @@ const Painting = () => {
             alt={painting.Title}
             className="object-cover mx-auto w-full h-full md:w-[800px] md:h-[700px] lg:w-[500px] lg:h-[300px]"
           />
-          <p className="mt-5 text-center md:text-2xl md:w-[50%] md:my-20 md:mx-auto">
+          <p className="mt-5 mx-5 text-center md:text-2xl md:w-[50%] md:my-20 md:mx-auto">
             {painting.Description}
           </p>
           <p className="text-sm text-center mt-5">{painting.Price}</p>

@@ -1,15 +1,26 @@
+import Image from "next/image";
+import TroyLarge from "/public/assets/troy-large.jpg";
+
 const About = () => {
   return (
-    <section className="p-2 md: px-5 lg:px-60">
+    <section className="p-2 px-3 md:px-5 lg:px-60">
+      <div className="overflow-hidden rounded-full w-[200px] h-[200px] mb-5">
+        <Image
+          src={TroyLarge}
+          height={200}
+          width={250}
+          className="h-full w-full object-cover"
+        />
+      </div>
       <h1 className="text-3xl font-bold text-center mb-10">Troy Large</h1>
       <hr />
       <h2 className="text-2xl mt-4 mb-3 font-bold md:text-3xl text-amber-200">
         The Beginning
       </h2>
       <p className="indent-5 mb-2 ml-1 md:text-xl">
-        Born in 1961 Northern Michigan, Troy Large began his life wondering
-        about the mysterious phenomena & the abundatant amount of amazing things
-        around him the world had to offer.
+        Born in 1961 Los Angeles, California, Troy Large began his life
+        wondering about the mysterious phenomena & the abundatant amount of
+        amazing things around him the world had to offer.
       </p>
       <p className="indent-5 mb-2 ml-1 md:text-xl">
         Books did not only become a joyful part of his life but also a necessity
