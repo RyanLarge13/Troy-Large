@@ -9,7 +9,7 @@ export const metadata = {
 const About = () => {
   return (
     <section className="p-2 px-3 md:px-5 lg:px-60">
-      <div className="overflow-hidden rounded-full w-[200px] h-[200px] mb-5">
+      <div className="overflow-hidden rounded-full w-[200px] h-[200px] mb-10">
         <Image
           src={TroyLarge}
           height={200}

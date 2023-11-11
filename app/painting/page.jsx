@@ -45,9 +45,14 @@ const Painting = () => {
             alt={painting.Title}
             className="object-cover mx-auto w-full h-full md:w-[800px] md:h-[700px] lg:w-[500px] lg:h-[300px]"
           />
+          <p className="text-center">{painting.Size}</p>
           <p className="mt-5 mx-5 text-center md:text-2xl md:w-[50%] md:my-20 md:mx-auto">
             {painting.Description}
           </p>
+          <div className="mt-5 mb-10 ml-5">
+            <p>Frame type: {painting.FrameType}</p>
+            <p>Frame size: {painting.FrameThickness} inch</p>
+          </div>
           <p className="text-sm text-center mt-5">{painting.Price}</p>
           <div className="mt-10 p-3 flex justify-center items-center">
             <button

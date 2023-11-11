@@ -20,6 +20,11 @@ const Home = async () => {
     <section className="mt-20 px-3 flex flex-col justify-center items-start text-white md:grid md:grid-cols-2 md:gap-10 md:px-10 lg:grid lg:grid-cols-3 lg:gap-20">
       {paintings.map((painting) => (
         <div key={painting._id} className="my-10 md:my-5">
+          {painting.Sold && (
+            <p className="bg-red-400 px-3 rounded-sm min-w-min mb-1 text-slate-100 font-bold">
+              Sold
+            </p>
+          )}
           <img
             src={painting.Img}
             alt={painting.Title}

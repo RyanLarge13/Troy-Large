@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { loadStripe } from "@stripe/stripe-js";
+import Link from "next/link";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
@@ -57,19 +58,22 @@ const Checkout = () => {
           <div>
             {cartItems.map((item) => (
               <div key={item._id} className="my-3 rounded-sm p-3">
-                <img
-                  src={item.Img}
-                  alt={item.Title}
-                  className="object-cover mx-auto w-full h-full md:w-[800px] md:h-[700px] lg:w-[500px] lg:h-[300px]"
-                />
+                <Link href={`/painting/?id=${item._id}`}>
+                  <img
+                    src={item.Img}
+                    alt={item.Title}
+                    className="object-cover mx-auto w-full h-full md:w-[800px] md:h-[700px] lg:w-[500px] lg:h-[300px]"
+                  />
+                </Link>
                 <div className="flex justify-between items-center">
-                  <p className="my-2">{item.Title}</p>
+                  <p>{item.Size}</p>
                   <p
                     className={`${Number(item.Sale) > 0 ? "line-through" : ""}`}
                   >
                     {item.Price}
                   </p>
                 </div>
+                <p className="my-2 text-lg">{item.Title}</p>
                 {Number(item.Sale) > 0 ? (
                   <div className="flex justify-between items-center">
                     <p>Sale! New Price: </p>
@@ -78,7 +82,6 @@ const Checkout = () => {
                 ) : (
                   ""
                 )}
-                <p>Quantity: 1</p>
                 <button
                   onClick={() => removeItem(item._id)}
                   className="mt-5 px-3 py-1 rounded-sm shadow-md bg-slate-700"
