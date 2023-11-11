@@ -2,15 +2,6 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 
-/*export const generateMetadata = async ({ params, searchParams }) => {
-  const res = await fetch(`/api/painting/${paintingId}`);
-  const data = await res.json();
-  return {
-    title: data[0].Title,
-    description: data[0].Description,
-  };
-};*/
-
 const Painting = () => {
   const [painting, setPainting] = useState(null);
   const [itemInCart, setItemInCart] = useState(false);

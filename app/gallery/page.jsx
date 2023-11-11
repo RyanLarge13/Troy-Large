@@ -2,6 +2,12 @@ import mongoose from "mongoose";
 import { connectDB } from "@utils/connectDB.js";
 import MasonryGrid from "@components/MasonryGrid.jsx";
 
+export const metadata = {
+  title: "Troy Large - gallery",
+  description:
+    "View the gallery of Troy Large, and enjoy a collection of purchasable pastel art from an amazing painter!",
+};
+
 const getImages = async () => {
   try {
     await connectDB();

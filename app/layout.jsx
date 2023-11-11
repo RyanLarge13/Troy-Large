@@ -1,6 +1,7 @@
 import "./globals.css";
 import Header from "@components/Header";
 import Cart from "@components/Cart";
+import Footer from "@components/Footer"
 
 export const metadata = {
   title: "Troy Large",
@@ -20,6 +21,7 @@ export default function RootLayout({ children }) {
         <Header />
         <main className="mt-20">{children}</main>
         <Cart />
+        <Footer/>
       </body>
     </html>
   );

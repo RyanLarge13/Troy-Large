@@ -1,6 +1,11 @@
 import Image from "next/image";
 import TroyLarge from "/public/assets/troy-large.jpg";
 
+export const metadata = {
+	title: "Troy Large - about", 
+	description: "Troy Large from childhood to grandfather, a short backstory telling the world about this amazing artist"
+}
+
 const About = () => {
   return (
     <section className="p-2 px-3 md:px-5 lg:px-60">
