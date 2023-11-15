@@ -35,6 +35,7 @@ const Painting = () => {
 
   return (
     <section className="mt-20 pb-20 text-white">
+        <div className="min-h-screen">
       {painting && (
         <div>
           <p className="text-2xl text-center font-bold mb-10 md:text-3xl">
@@ -64,6 +65,7 @@ const Painting = () => {
           </div>
         </div>
       )}
+      </div>
     </section>
   );
 };
